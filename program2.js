@@ -1,6 +1,5 @@
 const decodeTheRing = function (s, p) {
 
-  const decodeTheRing = function (s, p) {
     const isMatch = (i, j) => {
         // If both string and pattern are fully processed, it's a match
         if (i >= s.length && j >= p.length) return true;
