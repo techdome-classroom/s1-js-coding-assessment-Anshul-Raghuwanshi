@@ -24,11 +24,11 @@ const decodeTheRing = function (s, p) {
   return dp[m][n];
 };
 
-console.log(decodeTheRing("aa", "a"));    // Output: false
-console.log(decodeTheRing("aa", "*"));    // Output: true
-console.log(decodeTheRing("cb", "?a"));    // Output: false
-console.log(decodeTheRing("adceb", "*a*b")); // Output: true
-console.log(decodeTheRing("acdcb", "a*c?b")); // Output: false
+console.log(decodeTheRing("aa", "a"));   
+console.log(decodeTheRing("aa", "*"));   
+console.log(decodeTheRing("cb", "?a"));    
+console.log(decodeTheRing("adceb", "*a*b")); 
+console.log(decodeTheRing("acdcb", "a*c?b")); 
 
     
 module.exports = decodeTheRing;
