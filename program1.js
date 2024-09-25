@@ -43,7 +43,7 @@ const map2 = [
   ["W", "W", "W", "L", "L"],
 ];
 
-console.log(getTotalIsles(map1)); // Output: 1
-console.log(getTotalIsles(map2)); // Output: 3
+console.log(getTotalIsles(map1)); 
+console.log(getTotalIsles(map2)); 
 
 module.exports = getTotalIsles
