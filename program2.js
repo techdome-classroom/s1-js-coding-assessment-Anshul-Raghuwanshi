@@ -1,34 +1,34 @@
 const decodeTheRing = function (s, p) {
 
-    // s: the input string (message)
-    // p: the pattern (decoder key)
+  const decodeTheRing = function (s, p) {
+    const isMatch = (i, j) => {
+        // If both string and pattern are fully processed, it's a match
+        if (i >= s.length && j >= p.length) return true;
 
-    // dp[i][j] will be true if s[0...i-1] matches p[0...j-1]
-    const dp = Array(s.length + 1).fill(false).map(() => Array(p.length + 1).fill(false));
+        // If pattern is exhausted but string isn't, or vice versa, no match
+        if (j >= p.length) return false;
 
-    // Empty pattern matches an empty string
-    dp[0][0] = true;
-
-    // Handle cases where the pattern starts with '*'
-    for (let j = 1; j <= p.length; j++) {
-        if (p[j - 1] === '*') {
-            dp[0][j] = dp[0][j - 1];  // '*' can match empty string
+        // Handle star (*) in the pattern
+        if (p[j] === '*') {
+            // Try two things:
+            // 1. Skip the star and move forward in the pattern
+            // 2. Use the star to match one character in the string and continue
+            if (isMatch(i, j + 1)) return true; // skip *
+            if (i < s.length && isMatch(i + 1, j)) return true; // use * to match a character
         }
-    }
 
-    // Fill the dp table
-    for (let i = 1; i <= s.length; i++) {
-        for (let j = 1; j <= p.length; j++) {
-            if (p[j - 1] === '?' || p[j - 1] === s[i - 1]) {
-                dp[i][j] = dp[i - 1][j - 1];  // Match a single character or question mark
-            } else if (p[j - 1] === '*') {
-                dp[i][j] = dp[i - 1][j] || dp[i][j - 1];  // '*' can match zero or more characters
-            }
+        // Handle question mark (?) or exact character match
+        if (i < s.length && (p[j] === '?' || p[j] === s[i])) {
+            return isMatch(i + 1, j + 1);
         }
-    }
 
-    return dp[s.length][p.length];
+        // If no conditions are met, return false
+        return false;
+    };
+
+    return isMatch(0, 0);
 };
 
+module.exports = decodeTheRing;
   
   module.exports = decodeTheRing;
