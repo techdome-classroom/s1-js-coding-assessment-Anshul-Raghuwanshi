@@ -31,4 +31,3 @@ const decodeTheRing = function (s, p) {
 
 module.exports = decodeTheRing;
   
-  module.exports = decodeTheRing;
