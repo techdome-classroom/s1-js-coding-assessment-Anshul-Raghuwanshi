@@ -33,6 +33,4 @@ const getTotalIsles = function (grid) {
     return count;
 };
 
-};
-
-module.exports = getTotalIsles;
+module.exports = getTotalIsles
